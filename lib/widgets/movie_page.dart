@@ -150,7 +150,6 @@ class _MoviePageState extends State<MoviePage> {
                 return _noDataView();
               }
               List<Movie> movies = snapshot.data;
-              movieDetails = movies.elementAt(0);
               return Container(
                 width: MediaQuery.of(context).size.width,
                 height: 500,
@@ -181,9 +180,8 @@ class _MoviePageState extends State<MoviePage> {
       padding: EdgeInsets.all(2),
       margin: EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(2)),
-            border: Border.all(color: Colors.blueAccent)
-        ),
+          borderRadius: BorderRadius.all(Radius.circular(2)),
+          border: Border.all(color: Colors.blueAccent)),
       child: Text(tagName),
     );
   }
@@ -220,9 +218,9 @@ class _MoviePageState extends State<MoviePage> {
   Widget _getTagList(List<String> tagList) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 50,
-      child: tagList != null && tagList.length > 0 ? (
-          ListView.builder(
+      height: 40,
+      child: tagList != null && tagList.length > 0
+          ? (ListView.builder(
               itemCount: tagList.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, i) {
@@ -231,8 +229,8 @@ class _MoviePageState extends State<MoviePage> {
                   height: 80,
                   child: _getHashTagWidget(tagList.elementAt(i)),
                 );
-              })
-      ):Text("No Tag Found")
+              }))
+          : Text("No Tag Found"),
     );
   }
 }
